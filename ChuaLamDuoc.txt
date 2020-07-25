@@ -1,0 +1,5 @@
+Hiện tại thì trình độ của tụi em thì mới năm 3 nên mới học được phần cơ bản, nên em mới làm được mấy thứ cơ bản. Còn 2 cái chưa biết làm được: 
+
+Xây dựng hệ thống đăng nhập, đăng ký + xác thực qua email *em có tìm hiểu trên GG nhưng chưa hiểu hết nên chưa làm vào*
+
+Nếu chưa thanh toán hết đồ trong cart sẽ lưu lại cart trong những lần đăng nhập sau ( hết hạn sau 15 ngày)

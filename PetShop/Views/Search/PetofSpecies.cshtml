@@ -1,0 +1,83 @@
+﻿@using PetShop.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.PagedList<Pet>
+@{
+    ViewBag.Title = "AllNewPet";
+    Layout = "~/Views/Layout/UserLayout.cshtml";
+}
+<div class="">
+    <div class="ban-top " style="background-color: cadetblue">
+        <div class="container">
+            <div class="ban-top-con">
+                <div class="top_nav_left">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav menu__list">
+                                    <li class="menu__item"><a class="menu__link" href="/Home/Index">TRANG CHỦ <span class="sr-only">(current)</span></a></li>
+                                    <li class=" menu__item"><a class="menu__link" href="@Url.Action("MenuPet", "Search")">Thú cưng</a></li>
+                                    <li class=" menu__item"><a class="menu__link" href="/ShoppingCarts">Giỏ hàng</a></li>
+                                    @Html.Action("Tool", "Home")
+                                </ul>
+                            </div>
+                    </nav>
+
+                </div>
+          
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="news-left">
+                <div class="gallery">
+                    <div class="container" style="margin-top: -10%">
+                        <h3 class="title">Tất cả  <span>Thú cưng</span></h3>
+                        <section>
+                            <ul class="lb-album ">
+                                @foreach (var item in Model)
+                                {
+                                    <li class="grid" style="border: 1px solid black;">
+                                        <figure class="effect-apollo">
+                                            <a href="@Url.Action("DetailsPet", "Home", new { @id = item.IDPet})"><img src="~/Content/images/@item.Image" alt="image7"></a>
+                                            <div style="border-top: 5px solid black ;width: 100%; height: 100px; background-color: white;">
+                                                <center>
+                                                    <br />
+                                                    <div class="clearfix"></div>
+                                                    <b>@item.PetName</b>
+                                                    <div class="clearfix"></div>
+                                                    @{
+                                                        float tmp = (float)item.Price;
+                                                    }
+                                                    <b>Giá: <span style="color: red; font-weight: bold">@tmp.ToString("0.") VNĐ</span></b>
+                                                    <div class="clearfix"></div>
+                                                    <a href="@Url.Action("AddItem", "ShoppingCarts", new { @id = item.IDPet})" class="btn btn-danger"><b>THÊM VÀO GIỎ</b></a>
+                                                </center>
+                                            </div>
+                                        </figure>
+                                    </li>
+                                }
+                            </ul>
+                        </section>
+                        <div class="clearfix"></div>
+                        <center>@Html.PagedListPager(Model, Page => Url.Action("PetofSpecies", new { Page = Page }))</center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+

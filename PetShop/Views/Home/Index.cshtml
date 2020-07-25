@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/UserLayout.cshtml";
+}
+
+<div class="banner">
+    <div class="ban-top ">
+        <div class="container">
+            <div class="ban-top-con">
+                <div class="top_nav_left">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav menu__list">
+                                    <li class="active menu__item menu__item--current"><a class="menu__link" href="/Home/Index">TRANG CHỦ <span class="sr-only">(current)</span></a></li>
+                                    <li class=" menu__item"><a class="menu__link" href="@Url.Action("MenuPet", "Search")">Thú cưng</a></li>
+                                    <li class=" menu__item"><a class="menu__link" href="/ShoppingCarts">Giỏ hàng</a></li>
+                                    @Html.Action("Tool", "Home")
+                                </ul>
+                            </div>
+                    </nav>
+
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="ban-bot text-center">
+        <script src="~/Content/js/responsiveslides.min.js"></script>
+        <script>
+            // You can also use "$(window).load(function() {"
+            $(function () {
+                // Slideshow 4
+                $("#slider3").responsiveSlides({
+                    auto: true,
+                    pager: true,
+                    nav: false,
+                    speed: 500,
+                    namespace: "callbacks",
+                    before: function () {
+                        $('.events').append("<li>before event fired.</li>");
+                    },
+                    after: function () {
+                        $('.events').append("<li>after event fired.</li>");
+                    }
+                });
+            });
+        </script>
+        <div id="top" class="callbacks_container">
+            <ul class="rslides" id="slider3">
+                <li>
+                    <div class="ban-info">
+                        <h3>Top 100 thú cưng đáng yêu nhất</h3>
+                        <p>Những thú cưng được chọn lọc và được nhiều người chú ý nhất.</p>
+                        <a class="hvr-rectangle-out" href="@Url.Action("RatingPet", "Home")">Xem chi tiết</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="ban-info">
+                        <h3>Top thú vật được mua nhiều nhất</h3>
+                        <p>Những thú cưng nhiều đơn hàng nhất.</p>
+                        <a class="hvr-rectangle-out" href="@Url.Action("TopPet", "Home")">Xem chi tiết</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="ban-info">
+                        <h3>Tất cả thú cưng tại shop</h3>
+                        <p>Tất cả thú cưng duy nhất có tại shop.</p>
+                        <a class="hvr-rectangle-out" href="@Url.Action("AllPet", "Home")">Xem chi tiết</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<div class="clearfix"></div>
+<!--Thú cưng mới-->
+@Html.Action("NewPet", "Home")
+<!--Thú cưng mua nhiều-->
+@Html.Action("HotPet", "Home")
+<!-- content -->
+<div class="content">
+    <div class="container">
+        <h3 class="title wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">Xin chào bạn đến với <span>Pet Shop</span></h3>
+        <p class="con-para wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">
+            Chuyên cung cấp những thú cưng có 1 không 2 tại Việt Nam.
+        </p>
+        <div class="content-grids ">
+            <div class="col-md-3 wel-grid text-center wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                <div class="btm-clr4">
+                    <span></span>
+                    <figure class="icon">
+                        <img src="~/Content/images/icon1.png" alt=" " />
+                    </figure>
+                    <h4>Chất lượng</h4>
+                </div>
+            </div>
+            <div class="col-md-3 wel-grid btm-gre text-center wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                <div class="btm-clr4 btm-clr1">
+                    <span></span>
+                    <figure class="icon">
+                        <img src="~/Content/images/icon4.png" alt=" " />
+                    </figure>
+                    <h4>Đa dạng</h4>
+                </div>
+            </div>
+            <div class="col-md-3 wel-grid text-center wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                <div class="btm-clr4 btm-clr1">
+                    <span></span>
+                    <figure class="icon">
+                        <img src="~/Content/images/icon3.png" alt=" " />
+                    </figure>
+                    <h4>Sức khỏe tốt </h4>
+                </div>
+            </div>
+            <div class="col-md-3 wel-grid btm-gre text-center wow flipInY" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                <div class="btm-clr btm-clr3">
+                    <span></span>
+                    <figure class="icon">
+                        <img src="~/Content/images/icon2.png" alt=" " />
+                    </figure>
+                    <h4>Sạch</h4>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+<!-- //content -->

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<PetShop.Models.Species>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<a href="/Admin/Species/Create" class="btn btn-danger"><b>Thêm</b></a><br /><br />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SpeciesName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SpeciesName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Image)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.IDSpecies }) |
+            @Html.ActionLink("Details", "Details", new { id = item.IDSpecies }) |
+            @if (item.Pets.Count == 0)
+            {
+                <a href="@Url.Action("DeleteConfirmed", "Species", new { id = item.IDSpecies})" onclick="return confirm('Bạn chắc chắn muốn xóa')">Xóa</a>
+            }
+            else
+            {
+                <a href="#" onclick="return confirm('Không thể xóa, vui lòng xóa những thú cưng thuộc chủng loại này trước')">Xóa</a>
+            }
+        </td>
+    </tr>
+}
+
+</table>

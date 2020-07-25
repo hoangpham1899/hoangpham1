@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PetShop.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<a href="Admin/Orders/Create" class="btn btn-danger">Thêm</a><br /><br />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.DisplayName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalMoney)
+        </td>
+        <td>
+            @if(item.Status == false)
+            {
+                <p>Chưa giao</p>
+            }
+            else
+            {
+                <p>Đã giao</p>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.DisplayName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDOrder }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDOrder }) |
+            @if(item.OrderDetails.Count == 0)
+            {
+                <a href="@Url.Action("DeleteConfirmed", "Orders", new { id = item.IDOrder})" onclick="return confirm('Bạn chắc chắn muốn xóa')">Xóa</a>
+            }
+            else
+            {
+                <a href="#" onclick="return confirm('Không thể xóa')">Xóa</a>
+            }
+        </td>
+    </tr>
+}
+
+</table>

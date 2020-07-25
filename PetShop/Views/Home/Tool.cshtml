@@ -1,0 +1,46 @@
+﻿@using PetShop.Models;
+
+@{
+    User info = (User)Session["flag"];
+    User ad = (User)Session["admin"];
+    if (info != null)
+    {
+        <li class=" menu__item"><a class="menu__link">Hello: @info.DisplayName</a></li>
+        <li class=" menu__item"><a class="menu__link" href="@Url.Action("SignOut", "Accounts")">Đăng xuất</a></li>
+        if (ad != null)
+        {
+            <li class=" menu__item"><a class="menu__link" href="/Admin/Admin/Index">Quản lí</a></li>
+        }
+    }
+    else
+    {
+        <li class=" menu__item"><a class="menu__link" href="contact.html" data-toggle="modal" data-target="#myModal">Đăng nhập</a></li>
+        <li class=" menu__item"><a class="menu__link" href="contact.html" data-toggle="modal" data-target="#myModaldk">Đăng ký</a></li>
+    }
+}
+@Html.Action("SignUp", "Accounts")
+
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" style="font-weight: bold;">Đăng nhập</h4>
+            </div>
+            <div class="modal-body">
+                <form action="@Url.Action("SignIn", "Accounts")" method="post">
+                    <input type="text" name="txtUserName" placeholder="Username" required class="form-control" />
+                    <br />
+                    <input type="password" name="txtPassword" placeholder="Password" required class="form-control" />
+                    <br />
+                    <input type="submit" value="Đăng nhập" class="btn btn-danger" />
+                    <a href="@Url.Action("SendEmail", "ForgotPassword")">Quên mật khẩu</a>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

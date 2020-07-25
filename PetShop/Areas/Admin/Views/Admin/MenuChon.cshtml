@@ -1,0 +1,59 @@
+﻿
+<li>
+    <a href="/Home/Index">
+
+        <i class="fa fa-home" aria-hidden="true"></i>
+        <div class="ca-content">
+            <h4 class="ca-main">Trang chủ</h4>
+            <h3 class="ca-sub">Trang chủ</h3>
+        </div>
+    </a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Users")">
+
+        <i class="fas fa-guitar" aria-hidden="true"></i>
+        <div class="ca-content">
+            <h4 class="ca-main">@Html.Action("CountUser", "Count") Người dùng</h4>
+            <h3 class="ca-sub">Quản lý người dùng</h3>
+        </div>
+    </a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Pets")">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <div class="ca-content">
+            <h4 class="ca-main one">@Html.Action("CountPet", "Count") Thú cưng</h4>
+            <h3 class="ca-sub one">Quản lý thú cưng</h3>
+        </div>
+    </a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Orders")">
+        <i class="fa fa-tasks" aria-hidden="true"></i>
+        <div class="ca-content">
+            <h4 class="ca-main three">@Html.Action("CountOrder", "Count") Đơn hàng</h4>
+            <h3 class="ca-sub three">Quản lý đơn hàng</h3>
+        </div>
+    </a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Feedbacks")">
+        <i class="fas fa-globe-americas" aria-hidden="true"></i>
+        <div class="ca-content">
+            <h4 class="ca-main four">@Html.Action("CountFeedback", "Count") Phản hồi</h4>
+            <h3 class="ca-sub four">Thông tin phản hồi</h3>
+        </div>
+    </a>
+</li>
+<li>
+    <a href="@Url.Action("Index", "Species")">
+        <i class="fas fa-globe-americas" aria-hidden="true"></i>
+        <div class="ca-content">
+            <h4 class="ca-main four">@Html.Action("CountSpecies", "Count") Loài thú cưng</h4>
+            <h3 class="ca-sub four">Quản lí loài thú cưng</h3>
+        </div>
+    </a>
+</li>
+
+

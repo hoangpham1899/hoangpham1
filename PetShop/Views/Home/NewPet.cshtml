@@ -1,0 +1,38 @@
+﻿@using PetShop.Models;
+@model List<Pet>
+
+<div class="gallery">
+    <div class="container">
+        <h3 class="title">Thú cưng <span>Mới</span></h3>
+        <section>
+            <ul class="lb-album ">
+                @foreach (var item in Model)
+                {
+                    <li class="grid" style="border: 1px solid black;">
+                        <figure class="effect-apollo">
+                            <a href="@Url.Action("DetailsPet", "Home", new { @id = item.IDPet})"><img src="~/Content/images/@item.Image" alt="image7"></a>
+                            <div style="border-top: 5px solid black ;width: 100%; height: 100px; background-color: white;">
+                                <center>
+                                    <br />
+                                    <div class="clearfix"></div>
+                                    <b>@item.PetName</b>
+                                    <div class="clearfix"></div>
+                                    @{ 
+                                        float tmp = (float)item.Price;
+                                    }
+                                    <b>Giá: <span style="color: red; font-weight: bold">@tmp.ToString("0.") VNĐ</span></b>
+                                    <div class="clearfix"></div>
+                                    <a href="@Url.Action("AddItem", "ShoppingCarts", new { @id = item.IDPet})" class="btn btn-danger"><b>THÊM VÀO GIỎ</b></a>
+                                </center>
+                            </div>
+                        </figure>
+                    </li>
+                }
+            </ul>
+            <center><a href="@Url.Action("AllNewPet", "Home")"><b>XEM THÊM...</b></a></center>
+        </section>
+
+    </div>
+</div>
+
+<div class="clearfix"></div>

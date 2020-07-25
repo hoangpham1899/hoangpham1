@@ -1,0 +1,174 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PET SHOP</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Pets Love Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- js -->
+    <script type="text/javascript" src="~/Content/js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <script type="text/javascript" src="~/Content/js/bootstrap-3.1.1.min.js"></script>
+
+    <!-- fonts -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Acme' rel='stylesheet' type='text/css'><!-- //fonts -->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="~/Content/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Content/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <link href="~/Content/fontawesome-free-5.10.2-web/fontawesome-free-5.10.2-web/css/all.min.css" rel="stylesheet" />
+    <!--animate-->
+    <link href="~/Content/css/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="~/Content/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!--//end-animate-->
+
+</head>
+<body>
+    <div class="header wow fadeInDown animated" data-wow-delay=".5s">
+        <div class="container">
+            <div class="header-left grid">
+                <div class="grid__item color-1 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">
+                    <h1><a href="/Home/Index"><i></i><span class="link link--kukuri" data-letters="Pets Shop">Pets Shop</span></a></h1>
+                </div>
+            </div>
+            <div class="header-middle">
+                <ul>    
+                    <li><a href="@Url.Action("Index", "ShoppingCarts")"><i class="fa fa-cart-plus" style="font-size: 20px"></i>(@Session["count"])</a></li>
+                </ul>
+            </div>
+            <div class="header-right">
+                <div class="search">
+                    <form action="@Url.Action("Keyword", "Search")">
+                        <input type="search" name="Key" value="Tìm kiếm" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}" required="">
+                    </form>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    @RenderBody()
+    <!-- our pets -->
+    @Html.Action("SliderPet", "Home")
+    <!-- //our pets -->
+    <!-- our works -->
+    <div class="treatments">
+        <div class="container">
+            <h3 class="title wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">Our <span> Treatments</span></h3>
+            <div class="col-md-6 treat-left">
+
+
+            </div>
+            <div class="col-md-6 treat-right wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0s">
+                <div class="treat-icon">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <h4>Laudantium</h4>
+                    <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, quisquam est, qui dolorem ipsum quia dolor sit amet</p>
+                </div>
+            </div>
+            <div class="col-md-6 treat-right2 text-right wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0.1s">
+                <div class="treat-icon1">
+                    <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+                    <h4>Laudantium</h4>
+                    <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, quisquam est, qui dolorem ipsum quia dolor sit amet</p>
+                </div>
+            </div>
+            <div class="col-md-6 treat-left2">
+
+
+            </div>
+            <div class="col-md-6 treat-left">
+
+
+            </div>
+            <div class="col-md-6 treat-right wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                <div class="treat-icon">
+                    <span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
+                    <h4>Laudantium</h4>
+                    <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, quisquam est, qui dolorem ipsum quia dolor sit amet</p>
+                </div>
+            </div>
+            <div class="col-md-6 treat-right2 text-right no-bor wow bounceInDown" data-wow-duration="1.5s" data-wow-delay="0.3s">
+                <div class="treat-icon1">
+                    <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
+                    <h4>Laudantium</h4>
+                    <p> Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, quisquam est, qui dolorem ipsum quia dolor sit amet</p>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //our works -->
+    <!-- contact -->
+    <div class="contact-form " id="feedback">
+        <div class="container">
+            <h3 class="title">Phản <span>Hồi</span></h3>
+
+            <div class="col-md-6 contact-right wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">
+                <form action="@Url.Action("feedback", "Feedback")" method="post">
+                    <input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+                    <input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+                    <input type="text" name="Tel" value="Telephone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Telephone';}" required="">
+                    <textarea name="Feedbacks" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="col-md-6 contact-left wow zoomIn" data-wow-duration="2s" data-wow-delay="0.5s">
+                <h2>Contact Information</h2>
+                <ul class="icons-list footer-bottom">
+                    <li><a href="#" class="use1"><span>Facebook</span></a></li>
+                    <li><a href="#" class="use2"><span>Twitter</span></a></li>
+                    <li><a href="#" class="use3"><span>Dribbble</span></a></li>
+                    <li><a href="#" class="use4"><span>Pinterest</span></a></li>
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+            <p class="copy-right text-center">&copy; 2016 Pets Love. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+        </div>
+    </div>
+
+    <!-- contact -->
+    <!-- smooth scrolling -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+                var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        }); We really care about your pet's welfare!
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //smooth scrolling -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,32 @@
+﻿@model PetShop.Models.Species
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SpeciesName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpeciesName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IDSpecies }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

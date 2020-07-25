@@ -1,0 +1,59 @@
+﻿@using PetShop.Models;
+@model List<Pet>
+
+    <div class="our_pets">
+        <div class="container">
+            <h3 class="title wow fadeInUp animated" data-wow-delay=".5s">Our <span> Pets</span></h3>
+            <div class="flex-slider wow fadeInDown animated" data-wow-delay=".5s">
+
+                <ul id="flexiselDemo1">
+                    @foreach (var item in Model)
+                    {
+                        <li>
+                            <div class="laptop">
+                                <a href="@Url.Action("DetailsPet", "Home", new { @id = item.IDPet})"><div class="pets-effect ver_line zoom">
+                                    <div class="img-box"><img class="img-responsive zoom-img" src="~/Content/images/@item.Image" alt=" " /></div>
+                                    <div class="pets-info">
+                                        <div class="pets-info-slid">
+                                            <h4>@item.PetName</h4>
+                                            <span class="strip_line"></span>
+                                            <p>@item.Summary</p>
+                                            <span class="strip_line"></span>
+                                        </div>
+                                    </div>
+                                </div></a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+                <script type="text/javascript">
+                    $(window).load(function () {
+                        $("#flexiselDemo1").flexisel({
+                            visibleItems: 3,
+                            animationSpeed: 1000,
+                            autoPlay: true,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover: true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint: 480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint: 640,
+                                    visibleItems: 2
+                                },
+                                tablet: {
+                                    changePoint: 991,
+                                    visibleItems: 2
+                                }
+                            }
+                        });
+
+                    });
+                </script>
+                <script type="text/javascript" src="~/Content/js/jquery.flexisel.js"></script>
+            </div>
+        </div>
+    </div>

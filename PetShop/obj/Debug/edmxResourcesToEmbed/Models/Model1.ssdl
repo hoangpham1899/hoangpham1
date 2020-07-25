@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBPetShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="IDComment" />
+    </Key>
+    <Property Name="IDComment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUser" Type="int" />
+    <Property Name="IDPet" Type="int" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="DatePost" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="IDFeedback" />
+    </Key>
+    <Property Name="IDFeedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Feedbacks" Type="nvarchar(max)" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Tel" Type="varchar" MaxLength="14" />
+    <Property Name="Name" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="IDOrder" />
+    </Key>
+    <Property Name="IDOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDUser" Type="int" />
+    <Property Name="TotalMoney" Type="money" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="14" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="DateOrder" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="IDOrderDetails" />
+    </Key>
+    <Property Name="IDOrderDetails" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDOrder" Type="int" />
+    <Property Name="IDPet" Type="int" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="TotalMoney" Type="money" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="IDPet" />
+    </Key>
+    <Property Name="IDPet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PetName" Type="nvarchar(max)" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Descreptions" Type="nvarchar(max)" />
+    <Property Name="Age" Type="int" />
+    <Property Name="IDSpecies" Type="int" />
+    <Property Name="Image" Type="nvarchar(max)" />
+    <Property Name="DateCreate" Type="datetime" />
+    <Property Name="Price" Type="money" />
+    <Property Name="Views" Type="int" />
+    <Property Name="Rate" Type="float" />
+    <Property Name="Vote" Type="int" />
+    <Property Name="Summary" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Rep">
+    <Key>
+      <PropertyRef Name="IDRep" />
+    </Key>
+    <Property Name="IDRep" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDComments" Type="int" />
+    <Property Name="IDUser" Type="int" />
+    <Property Name="Reply" Type="nvarchar(max)" />
+    <Property Name="DatePost" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Species">
+    <Key>
+      <PropertyRef Name="IDSpecies" />
+    </Key>
+    <Property Name="IDSpecies" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpeciesName" Type="nvarchar(max)" />
+    <Property Name="Image" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Top">
+    <Key>
+      <PropertyRef Name="IDTop" />
+    </Key>
+    <Property Name="IDTop" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDPet" Type="int" />
+    <Property Name="Quanity" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="IDUser" />
+    </Key>
+    <Property Name="IDUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar(max)" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Token" Type="nvarchar(max)" />
+    <Property Name="Role" Type="int" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="14" />
+    <Property Name="Address" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_Comments_Pet">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="IDPet" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="IDPet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="IDOrder" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="IDOrder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Pet">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="IDPet" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="IDPet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pet_Species">
+    <End Role="Species" Type="Self.Species" Multiplicity="0..1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Species">
+        <PropertyRef Name="IDSpecies" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="IDSpecies" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rep_Comments">
+    <End Role="Comments" Type="Self.Comments" Multiplicity="0..1" />
+    <End Role="Rep" Type="Self.Rep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="IDComment" />
+      </Principal>
+      <Dependent Role="Rep">
+        <PropertyRef Name="IDComments" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rep_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Rep" Type="Self.Rep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="IDUser" />
+      </Principal>
+      <Dependent Role="Rep">
+        <PropertyRef Name="IDUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Top_Pet">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+    <End Role="Top" Type="Self.Top" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="IDPet" />
+      </Principal>
+      <Dependent Role="Top">
+        <PropertyRef Name="IDPet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBPetShopModelStoreContainer">
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rep" EntityType="Self.Rep" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Top" EntityType="Self.Top" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Comments_Pet" Association="Self.FK_Comments_Pet">
+      <End Role="Pet" EntitySet="Pet" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_User" Association="Self.FK_Comments_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Order" Association="Self.FK_OrderDetails_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Pet" Association="Self.FK_OrderDetails_Pet">
+      <End Role="Pet" EntitySet="Pet" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pet_Species" Association="Self.FK_Pet_Species">
+      <End Role="Species" EntitySet="Species" />
+      <End Role="Pet" EntitySet="Pet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rep_Comments" Association="Self.FK_Rep_Comments">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Rep" EntitySet="Rep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rep_User" Association="Self.FK_Rep_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Rep" EntitySet="Rep" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Top_Pet" Association="Self.FK_Top_Pet">
+      <End Role="Pet" EntitySet="Pet" />
+      <End Role="Top" EntitySet="Top" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
